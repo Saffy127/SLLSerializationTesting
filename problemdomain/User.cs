@@ -1,4 +1,4 @@
-﻿namespace ProblemDomain
+namespace ProblemDomain
 {
     public class User
     {
@@ -22,6 +22,17 @@
             return FirstName == other.FirstName && LastName == other.LastName;
         }
 
-        // Consider overriding GetHashCode as well if needed
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + (FirstName != null ? FirstName.GetHashCode() : 0);
+                hash = hash * 23 + (LastName != null ? LastName.GetHashCode() : 0);
+                return hash;
+            }
+        }
+
+        // Consider adding other methods or properties if needed
     }
 }
