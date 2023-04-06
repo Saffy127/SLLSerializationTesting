@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Assignment_3_skeleton
 {
@@ -178,8 +178,20 @@ namespace Assignment_3_skeleton
 
         public object Retrieve(int index)
         {
-            return Retrieve(index);
+            if (index < 0 || index >= count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
+            Node current = head;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+            return current.Data;
         }
+
+
 
         public User RetrieveUser(int index)
         {
