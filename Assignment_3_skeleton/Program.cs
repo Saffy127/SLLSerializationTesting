@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using NUnit.Framework;
+using NUnitLite;
 
 namespace Assignment_3_skeleton
 {
@@ -21,23 +23,13 @@ namespace Assignment_3_skeleton
                 Console.WriteLine($"{i + 1}. {userList.Retrieve(i)}");
             }
 
-            // Run the provided test cases
+            // Run the test cases
             Console.WriteLine("\nRunning Test Cases:");
-            LinkedListTest(userList);
-            SerializationTests(userList);
+            //RunTests();
 
             Console.WriteLine("\nPress any key to exit...");
+            Console.ReadLine(); // Add this line
             Console.ReadKey();
-        }
-
-        static void LinkedListTest(LinkedListADT userList)
-        {
-            // Add your linked list tests here
-        }
-
-        static void SerializationTests(LinkedListADT userList)
-        {
-            // Add your serialization tests here
         }
     }
 }
