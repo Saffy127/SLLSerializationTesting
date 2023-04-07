@@ -1,29 +1,37 @@
 using System;
+//Date Finalized 2023-04-7
+/*
+The SLL class, implemented by Isaac Saffran, Jesse Taylor, and Seth Djikstra,
+is a linked list data structure that follows the specifications of the LinkedListADT interface. 
+This class provides functionality for adding, inserting, replacing, and removing items in a linked list.
+It also allows users to retrieve items at a specific index or check if an item exists in the list.
+The Node class is used to represent the individual nodes of the linked list.
+Throughout the implementation, the team ensured that no pre-existing classes, methods, or libraries were used.
+ */
 
 namespace Assignment_3_skeleton
 {
     public class SLL : LinkedListADT
     {
-        private Node head;
-        private int count;
-
+        private Node head; // The First node in the list.
+        private int count; // The number of nodes in the list.
+        
+        // Initializes a new instance of the SLL class.
         public SLL()
         {
             head = null;
             count = 0;
         }
 
+        // Appends the specified data to the end of the list.
         public void Append(object data)
         {
-            Append((User)data);
-        }
-
-        public void Append(User data)
-        {
+            // If the list is empty, add the datat as the first node.
             if (IsEmpty())
             {
                 head = new Node(data);
             }
+            // Otherwise, find the last node and add the data after it.
             else
             {
                 Node current = head;
@@ -44,11 +52,6 @@ namespace Assignment_3_skeleton
 
         public bool Contains(object data)
         {
-            return Contains((User)data);
-        }
-
-        public bool Contains(User data)
-        {
             Node current = head;
             while (current != null)
             {
@@ -63,14 +66,18 @@ namespace Assignment_3_skeleton
 
         public void Delete(int index)
         {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("List is empty.");
+            }
             Remove(index);
         }
 
-        public void Remove(int index)
+        private void Remove(int index)
         {
             if (index < 0 || index >= count)
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException("Index was outside the bounds of the array.");
             }
 
             if (index == 0)
@@ -91,11 +98,6 @@ namespace Assignment_3_skeleton
 
         public int IndexOf(object data)
         {
-            return IndexOf((User)data);
-        }
-
-        public int IndexOf(User data)
-        {
             Node current = head;
             for (int i = 0; i < count; i++)
             {
@@ -109,11 +111,6 @@ namespace Assignment_3_skeleton
         }
 
         public void Insert(object data, int index)
-        {
-            Insert((User)data, index);
-        }
-
-        public void Insert(User data, int index)
         {
             if (index < 0 || index > count)
             {
@@ -145,23 +142,14 @@ namespace Assignment_3_skeleton
 
         public void Prepend(object data)
         {
-            Prepend((User)data);
-        }
-
-        public void Prepend(User data)
-        {
             Node newNode = new Node(data);
             newNode.Next = head;
             head = newNode;
             count++;
         }
-
+        
+        // Replaces an item at the specified index
         public void Replace(object data, int index)
-        {
-            Replace((User)data, index);
-        }
-
-        public void Replace(User data, int index)
         {
             if (index < 0 || index >= count)
             {
@@ -175,29 +163,12 @@ namespace Assignment_3_skeleton
             }
             current.Data = data;
         }
-
+        //Retrieves an item at the specified index
         public object Retrieve(int index)
         {
             if (index < 0 || index >= count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
-            }
-
-            Node current = head;
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
-            return current.Data;
-        }
-
-
-
-        public User RetrieveUser(int index)
-        {
-            if (index < 0 || index >= count)
-            {
-                throw new IndexOutOfRangeException();
             }
 
             Node current = head;
@@ -215,10 +186,10 @@ namespace Assignment_3_skeleton
 
         private class Node
         {
-            public User Data { get; set; }
+            public object Data { get; set; }
             public Node Next { get; set; }
 
-            public Node(User data)
+            public Node(object data)
             {
                 Data = data;
                 Next = null;
