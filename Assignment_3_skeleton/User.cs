@@ -1,20 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Assignment_3_skeleton
 {
+    [DataContract]
     public class User
     {
+        // Properties to hold user ID, name, and email.
+        [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public string Email { get; set; }
 
+        [DataMember]
         public string Password;
 
-        //Initializes a User object.
+        // Constructor to initialize the user's ID, name, email and password
         public User(int id, string name, string email, string password)
         {
             Id = id;
@@ -23,25 +32,23 @@ namespace Assignment_3_skeleton
             Password = password;
         }
 
-        //Gets the users ID.
+       
         public int getId()
         {
             return Id;
         }
 
-        //Gets the users name.
         public string getName()
         {
             return Name;
         }
 
-        //Gets the users email.
         public string getEmail()
         {
             return Email;
         }
-
-        //Checks if the passed password is correct.
+        
+        // A method to check if the password passed is correct.
         public bool isCorrectPassword(string password)
         {
             if (Password == null && password == null)
@@ -51,16 +58,16 @@ namespace Assignment_3_skeleton
             else
                 return Password.Equals(password);
         }
-
-        //Checks if object is equal to another object.
+        
+        // A method to check if the object passed is equal to this user object.
         public bool equals(Object obj)
         {
             if (!(obj is User))
-			return false;
+                return false;
 
             User other = (User)obj;
 
-            return Id == other.Id && Id.Equals(other.Name) && Id.Equals(other.Email);
+            return Id == other.Id && Name.Equals(other.Name) && Email.Equals(other.Email);
         }
     }
 }
