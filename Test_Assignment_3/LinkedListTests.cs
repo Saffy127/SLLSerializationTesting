@@ -1,4 +1,4 @@
-﻿using Assignment_3_skeleton;
+using Assignment_3_skeleton;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -233,5 +233,88 @@ namespace Test_Assignment_3
             string value = (string)this.linkedList.Retrieve(1);
             Assert.Equals("b", value);
         }
+        
+        [Test]
+        public void TestInsertNodeAtBeginning()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+
+            this.linkedList.Insert("c", 0);
+
+            Assert.AreEqual(3, this.linkedList.Size());
+            Assert.AreEqual("c", this.linkedList.Retrieve(0));
+            Assert.AreEqual("a", this.linkedList.Retrieve(1));
+            Assert.AreEqual("b", this.linkedList.Retrieve(2));
+        }
+
+        [Test]
+        public void TestInsertNodeAtEnd()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+
+            this.linkedList.Insert("c", 2);
+
+            Assert.AreEqual(3, this.linkedList.Size());
+            Assert.AreEqual("a", this.linkedList.Retrieve(0));
+            Assert.AreEqual("b", this.linkedList.Retrieve(1));
+            Assert.AreEqual("c", this.linkedList.Retrieve(2));
+        }
+
+        [Test]
+        public void TestDeleteFirstNode()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+            this.linkedList.Append("c");
+
+            this.linkedList.Delete(0);
+
+            Assert.AreEqual(2, this.linkedList.Size());
+            Assert.AreEqual("b", this.linkedList.Retrieve(0));
+            Assert.AreEqual("c", this.linkedList.Retrieve(1));
+        }
+
+        [Test]
+        public void TestDeleteLastNode()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+            this.linkedList.Append("c");
+
+            this.linkedList.Delete(2);
+
+            Assert.AreEqual(2, this.linkedList.Size());
+            Assert.AreEqual("a", this.linkedList.Retrieve(0));
+            Assert.AreEqual("b", this.linkedList.Retrieve(1));
+        }
+
+        [Test]
+        public void TestAppendContainsNodes()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+            this.linkedList.Append("c");
+
+            Assert.IsTrue(this.linkedList.Contains("a"));
+            Assert.IsTrue(this.linkedList.Contains("b"));
+            Assert.IsTrue(this.linkedList.Contains("c"));
+            Assert.IsFalse(this.linkedList.Contains("d"));
+        }
+
+        [Test]
+        public void TestClearList()
+        {
+            this.linkedList.Append("a");
+            this.linkedList.Append("b");
+            this.linkedList.Append("c");
+
+            this.linkedList.Clear();
+
+            Assert.IsTrue(this.linkedList.IsEmpty());
+            Assert.AreEqual(0, this.linkedList.Size());
+        }
     }
+    
 }
