@@ -25,10 +25,9 @@ namespace Assignment_3_skeleton
 
             // Run the test cases
             Console.WriteLine("\nRunning Test Cases:");
-            //RunTests();
 
             Console.WriteLine("\nPress any key to exit...");
-            Console.ReadLine(); // Add this line
+            Console.ReadLine(); 
             Console.ReadKey();
         }
     }
