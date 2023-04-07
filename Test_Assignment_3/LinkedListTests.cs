@@ -233,7 +233,7 @@ namespace Test_Assignment_3
             string value = (string)this.linkedList.Retrieve(1);
             Assert.Equals("b", value);
         }
-        
+        // Test case to check inserting a node at the beginning of the linked list
         [Test]
         public void TestInsertNodeAtBeginning()
         {
@@ -247,7 +247,7 @@ namespace Test_Assignment_3
             Assert.AreEqual("a", this.linkedList.Retrieve(1));
             Assert.AreEqual("b", this.linkedList.Retrieve(2));
         }
-
+        // Test case to check inserting a node at the end of the linked list
         [Test]
         public void TestInsertNodeAtEnd()
         {
@@ -261,7 +261,7 @@ namespace Test_Assignment_3
             Assert.AreEqual("b", this.linkedList.Retrieve(1));
             Assert.AreEqual("c", this.linkedList.Retrieve(2));
         }
-
+        //Test case to check deleting the first node of the linked list
         [Test]
         public void TestDeleteFirstNode()
         {
@@ -275,7 +275,7 @@ namespace Test_Assignment_3
             Assert.AreEqual("b", this.linkedList.Retrieve(0));
             Assert.AreEqual("c", this.linkedList.Retrieve(1));
         }
-
+        
         [Test]
         public void TestDeleteLastNode()
         {
@@ -289,7 +289,7 @@ namespace Test_Assignment_3
             Assert.AreEqual("a", this.linkedList.Retrieve(0));
             Assert.AreEqual("b", this.linkedList.Retrieve(1));
         }
-
+        // Test case to check if the linked list contains a specific node
         [Test]
         public void TestAppendContainsNodes()
         {
@@ -302,7 +302,7 @@ namespace Test_Assignment_3
             Assert.IsTrue(this.linkedList.Contains("c"));
             Assert.IsFalse(this.linkedList.Contains("d"));
         }
-
+        // Test case to check clearing the linked list
         [Test]
         public void TestClearList()
         {
