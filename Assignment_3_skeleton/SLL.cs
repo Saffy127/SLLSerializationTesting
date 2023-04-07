@@ -49,7 +49,8 @@ namespace Assignment_3_skeleton
             head = null;
             count = 0;
         }
-
+        
+        //Determines whether the specified data exits in the list.
         public bool Contains(object data)
         {
             Node current = head;
@@ -63,7 +64,7 @@ namespace Assignment_3_skeleton
             }
             return false;
         }
-
+        // Deletes the item at the specified index.
         public void Delete(int index)
         {
             if (IsEmpty())
@@ -72,7 +73,7 @@ namespace Assignment_3_skeleton
             }
             Remove(index);
         }
-
+        // Removes the item at the specified index (helper method)
         private void Remove(int index)
         {
             if (index < 0 || index >= count)
@@ -95,7 +96,7 @@ namespace Assignment_3_skeleton
             }
             count--;
         }
-
+        // Returns the index of the first occurence of the specified data. 
         public int IndexOf(object data)
         {
             Node current = head;
@@ -109,7 +110,7 @@ namespace Assignment_3_skeleton
             }
             return -1;
         }
-
+        // Inserts the data in the index of the list.
         public void Insert(object data, int index)
         {
             if (index < 0 || index > count)
@@ -134,7 +135,7 @@ namespace Assignment_3_skeleton
                 count++;
             }
         }
-
+        // check if empty
         public bool IsEmpty()
         {
             return count == 0;
@@ -183,12 +184,12 @@ namespace Assignment_3_skeleton
         {
             return count;
         }
-
+        //Represents a node in the SLL
         private class Node
         {
             public object Data { get; set; }
             public Node Next { get; set; }
-
+            // Initializes a new instance of the node class.
             public Node(object data)
             {
                 Data = data;
